@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 
+from django.conf import settings
+
 # Create your views here.
 def index(request):
 
@@ -17,7 +19,7 @@ def index(request):
 
     try:
 
-        f = open(str("static/angular-present/" + last))
+        f = open(str(settings.BASE_DIR / str("static/angular-present/" + last)))
 
         if last[-2:] == 'js':
             return HttpResponse(f,'text/javascript')
@@ -33,7 +35,7 @@ def index(request):
     
     except:
 
-        f = open("static/angular-present/index.html")
+        f = open(settings.BASE_DIR / "static/angular-present/index.html")
 
         return HttpResponse(f)
 
